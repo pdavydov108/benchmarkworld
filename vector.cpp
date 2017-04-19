@@ -23,3 +23,13 @@ void BM_vector_copy(benchmark::State &state) {
 }
 
 BENCHMARK(BM_vector_copy);
+
+void BM_vector_copy_one(benchmark::State &state) {
+    std::vector<int> ivector = {0};
+    while (state.KeepRunning()) {
+        auto other = ivector;
+        (void)other;
+    }
+}
+
+BENCHMARK(BM_vector_copy_one);

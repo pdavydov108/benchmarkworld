@@ -23,3 +23,13 @@ void BM_set_copy(benchmark::State &state) {
 }
 
 BENCHMARK(BM_set_copy);
+
+void BM_set_copy_one(benchmark::State &state) {
+    std::set<int> iset = {0};
+    while (state.KeepRunning()) {
+        auto other = iset;
+        (void)other;
+    }
+}
+
+BENCHMARK(BM_set_copy_one);

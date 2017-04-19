@@ -21,8 +21,9 @@ BENCHMARK(BM_file_open_close_no_sync);
 
 void BM_cfile_open_close(benchmark::State &state) {
     while (state.KeepRunning()) {
-        auto f = std::fopen("main.cpp", "r");
-        fclose(f);
+        if (auto f = std::fopen("main.cpp", "r")) {
+            fclose(f);
+        }
     }
 }
 BENCHMARK(BM_cfile_open_close);
